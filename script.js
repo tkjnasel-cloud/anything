@@ -607,16 +607,16 @@ function explodeFlowers() {
     const container = document.getElementById("flowerContainer") || document.body;
     
     const flowerImages = [
-        "../assets/bunga1.png",
-        "../assets/bunga2.png",
-        "../assets/bunga3.png",
-        "../assets/bunga4.png",
-        "../assets/bunga5.png",
-        "../assets/bunga6.png",
-        "../assets/bunga7.png",
-        "../assets/bunga8.png",
-        "../assets/bunga9.png",
-        "../assets/bunga10.png"
+        "./assets/bunga1.png",
+        "./assets/bunga2.png",
+        "./assets/bunga3.png",
+        "./assets/bunga4.png",
+        "./assets/bunga5.png",
+        "./assets/bunga6.png",
+        "./assets/bunga7.png",
+        "./assets/bunga8.png",
+        "./assets/bunga9.png",
+        "./assets/bunga10.png"
     ];
 
     const totalFlowers = 140; 
