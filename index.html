@@ -63,7 +63,7 @@
             <p class="envelope-text">click to open the letter</p>
         </div>
 
- <!-- SURAT POP-UP -->
+        <!-- SURAT POP-UP -->
         <div id="letterCard" class="letter-card">
             <button class="close-btn" onclick="closeLetter()">✕</button>
             <div class="letter-decor top-left"></div>
@@ -87,36 +87,37 @@
         </div>
     </div>
 
-<!-- SECTION GAME TEBAK KARDUS KUCING -->
-<section id="gameScene" class="game-scene">
-    <div class="game-header">
-        <h2 id="gameTitle">ohhhh noooooo blek was hiding, u should find him !!!</h2>
-        <p id="gameStatus">perhatiin baik baik.... blek sembunyi di kardus mana yaaa ? </p>
-    </div>
-
-    <div class="boxes-container">
-        <!-- GAMBAR KUCING CUMA ADA 1 -->
-        <img src="../assets/cat.png" id="singleCat" class="cat-img" alt="Cat">
-
-        <!-- 3 KARDUS KOSONG -->
-        <div class="box-wrapper" id="box0" onclick="chooseBox(0)">
-            <img src="../assets/box.png" class="box-img" alt="Box">
+    <!-- SECTION GAME TEBAK KARDUS KUCING -->
+    <section id="gameScene" class="game-scene">
+        <div class="game-header">
+            <h2 id="gameTitle">ohhhh noooooo blek was hiding, u should find him !!!</h2>
+            <p id="gameStatus">perhatiin baik baik.... blek sembunyi di kardus mana yaaa ? </p>
         </div>
-        <div class="box-wrapper" id="box1" onclick="chooseBox(1)">
-            <img src="../assets/box.png" class="box-img" alt="Box">
-        </div>
-        <div class="box-wrapper" id="box2" onclick="chooseBox(2)">
-            <img src="../assets/box.png" class="box-img" alt="Box">
-        </div>
-    </div>
 
-    <button id="startShuffleBtn" class="start-game-btn" onclick="startGame()">mulai acak ! </button>
-</section>
+        <div class="boxes-container">
+            <!-- GAMBAR KUCING CUMA ADA 1 -->
+            <img src="./assets/cat.png" id="singleCat" class="cat-img" alt="Cat">
+
+            <!-- 3 KARDUS KOSONG -->
+            <div class="box-wrapper" id="box0" onclick="chooseBox(0)">
+                <img src="./assets/box.png" class="box-img" alt="Box">
+            </div>
+            <div class="box-wrapper" id="box1" onclick="chooseBox(1)">
+                <img src="./assets/box.png" class="box-img" alt="Box">
+            </div>
+            <div class="box-wrapper" id="box2" onclick="chooseBox(2)">
+                <img src="./assets/box.png" class="box-img" alt="Box">
+            </div>
+        </div>
+
+        <button id="startShuffleBtn" class="start-game-btn" onclick="startGame()">mulai acak ! </button>
+    </section>
+
+    <div id="starContainer"></div>
+    
+    <!-- ELEMEN MUSIK -->
+    <audio id="bgMusic" loop src="./assets/birthday.mp3"></audio>
 
     <script src="script.js"></script>
-    <div id="starContainer"></div>
-
-    <!-- ELEMEN MUSIK -->
-    <audio id="bgMusic" loop src="../assets/birthday.mp3"></audio>
 </body>
 </html>
