@@ -1,0 +1,766 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #081229, #122B58, #274690);
+    color: white;
+    position: relative;
+}
+
+.background {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: #4d79ff;
+    filter: blur(180px);
+    opacity: 0.25;
+    animation: glow 5s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* OPENING */
+#opening {
+    position: relative;
+    text-align: center;
+    z-index: 5;
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+#message {
+    font-size: 22px;
+    opacity: 0.8;
+    margin-bottom: 40px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 16px 42px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+#yes {
+    background: white;
+    color: #1d3d75;
+}
+
+#no {
+    background: #ff4f7a;
+    color: white;
+    position: relative;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+/* LOADING */
+#loading {
+    display: none;
+    position: absolute;
+    text-align: center;
+    z-index: 10;
+}
+
+#loading h2 {
+    font-size: 35px;
+    margin-bottom: 50px;
+}
+
+.loading-box {
+    width: 420px;
+    margin: auto;
+    position: relative;
+}
+
+.progress {
+    width: 100%;
+    height: 12px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+}
+
+#bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #6da8ff, #ffffff);
+    border-radius: 20px;
+}
+
+#cat {
+    position: absolute;
+    width: 80px;
+    left: 0;
+    bottom: 18px;
+    transition: left 0.04s linear;
+    user-select: none;
+    pointer-events: none;
+}
+
+#percent {
+    margin-top: 25px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* BIRTHDAY TEXT */
+#birthday {
+    position: absolute;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#typing {
+    font-size: 72px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px #fff, 0 0 35px #8cb7ff, 0 0 60px #4d79ff;
+}
+
+/* CAKE CANVAS SCENE */
+#cakeScene {
+    position: absolute;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 30;
+}
+
+#cakeContainer {
+    cursor: pointer;
+}
+
+#cakeText {
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+/* CONTAINER BUNGA FULL SCREEN */
+#flowerContainer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.bloom-flower {
+    position: fixed;
+    pointer-events: none;
+    user-select: none;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+    z-index: 999;
+    animation: burstOut 3.5s cubic-bezier(0.08, 0.82, 0.17, 1) forwards;
+}
+
+@keyframes burstOut {
+    0% {
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(var(--scale)) rotate(var(--rot));
+        opacity: 0;
+    }
+}
+
+/* =============================================
+   OVERLAY & ANIMASI AMPLOP BIRU ELEGAN
+============================================= */
+
+.letter-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 10, 24, 0.85);
+    backdrop-filter: blur(10px);
+    display: none !important;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.letter-overlay.show {
+    display: flex !important;
+    opacity: 1;
+}
+
+/* CONTAINER AMPLOP */
+.envelope-container {
+    width: 340px;
+    height: 220px;
+    background: #0f1c3f;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(77, 121, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    animation: floatEnvelope 3.5s ease-in-out infinite;
+    overflow: visible !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    perspective: 1000px;
+}
+
+.envelope-container:hover {
+    transform: scale(1.05) translateY(-8px);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        0 0 35px rgba(110, 168, 255, 0.6);
+}
+
+/* KERTAS NAIK/TIMBUL DARI DALAM AMPLOP */
+.envelope-paper {
+    position: absolute;
+    bottom: 12px;
+    width: 300px;
+    height: 170px;
+    background: linear-gradient(135deg, #fffcf5 0%, #f7f0e1 100%);
+    border-radius: 8px;
+    border: 1px solid #d4af37;
+    z-index: 2;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Saat diklik -> Kertas Meluncur Naik ke Atas */
+.envelope-container.active .envelope-paper {
+    transform: translateY(-110px);
+    z-index: 5;
+}
+
+/* LIPATAN KIRI & KANAN AMPLOP */
+.envelope-container::before {
+    display: block !important;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #14244d;
+    border-radius: 12px;
+    clip-path: polygon(0 0, 48% 50%, 0 100%);
+    z-index: 3;
+}
+
+.envelope-container::after {
+    display: block !important;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #182a57;
+    border-radius: 12px;
+    clip-path: polygon(100% 0, 100% 100%, 52% 50%);
+    z-index: 3;
+}
+
+/* LIPATAN BAWAH AMPLOP */
+.envelope-pocket {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #1d356d, #162a56);
+    border-radius: 12px;
+    clip-path: polygon(0 100%, 100% 100%, 50% 45%);
+    z-index: 4;
+}
+
+/* LIPATAN ATAS (FLAP) - BISA TERBUKA KE ATAS */
+.envelope-flap {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #274690, #1d3875);
+    border-radius: 12px 12px 0 0;
+    clip-path: polygon(0 0, 100% 0, 50% 55%);
+    z-index: 6;
+    transform-origin: top center;
+    transition: transform 0.5s ease;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+/* Saat diklik -> Pintu Flap Terbuka Ke Atas */
+.envelope-container.active .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+/* WAX SEAL LILIN LELEH WINE RED + UKIRAN BUNGA EMAS (PURE CSS) */
+.envelope-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    z-index: 10;
+    width: 64px;
+    height: 60px;
+    
+    /* Warna Merah Marun Lilin Mewah (Crimson/Burgundy Gradient) */
+    background: radial-gradient(circle at 30% 30%, #ff4d6d 0%, #c1121f 40%, #780000 80%, #3e0000 100%);
+    
+    /* Lelehan Cair Organik Asimetris */
+    border-radius: 42% 58% 61% 39% / 43% 38% 62% 57%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Shadow 3D Realistis */
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.75),
+        inset -2px -3px 6px rgba(0, 0, 0, 0.7),
+        inset 2px 3px 6px rgba(255, 200, 200, 0.6);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* CEKUKAN STEMPEL DI TENGAH */
+.envelope-seal::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 48% 52% 51% 49% / 51% 49% 51% 49%;
+    background: radial-gradient(circle at 35% 35%, #a1000f 0%, #590008 85%);
+    box-shadow: 
+        inset 0 3px 6px rgba(0, 0, 0, 0.8),
+        inset 0 -2px 4px rgba(255, 180, 180, 0.3),
+        0 1px 2px rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 150, 150, 0.25);
+}
+
+/* UKIRAN BUNGA KERING BERWARNA EMAS TERANG */
+.envelope-seal::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-color: #ffe699; /* Warna Emas Terang */
+    
+    /* Vector Tangkai Bunga Kering Aesthetic */
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2c-.5 2-1.5 3.5-3 4.5 1.5 1 2.5 2.5 3 4.5.5-2 1.5-3.5 3-4.5-1.5-1-2.5-2.5-3-4.5zm-5 6c-.4 1.6-1.2 2.8-2.4 3.6 1.2.8 2 2 2.4 3.6.4-1.6 1.2-2.8 2.4-3.6C8.2 10.8 7.4 9.6 7 8zm10 0c-.4 1.6-1.2 2.8-2.4 3.6 1.2.8 2 2 2.4 3.6.4-1.6 1.2-2.8 2.4-3.6-1.2-.8-2-1.9-2.4-3.6zM11 11h2v11h-2z'/></svg>") no-repeat center / contain;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2c-.5 2-1.5 3.5-3 4.5 1.5 1 2.5 2.5 3 4.5.5-2 1.5-3.5 3-4.5-1.5-1-2.5-2.5-3-4.5zm-5 6c-.4 1.6-1.2 2.8-2.4 3.6 1.2.8 2 2 2.4 3.6.4-1.6 1.2-2.8 2.4-3.6C8.2 10.8 7.4 9.6 7 8zm10 0c-.4 1.6-1.2 2.8-2.4 3.6 1.2.8 2 2 2.4 3.6.4-1.6 1.2-2.8 2.4-3.6-1.2-.8-2-1.9-2.4-3.6zM11 11h2v11h-2z'/></svg>") no-repeat center / contain;
+    
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.9));
+    z-index: 2;
+}
+
+/* TEKS PETUNJUK DI BAWAH AMPLOP */
+.envelope-text {
+    position: absolute !important;
+    bottom: -50px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 20 !important;
+    color: #e2ebff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 8px 22px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+}
+
+.envelope-container.active .envelope-text {
+    opacity: 0;
+}
+
+@keyframes floatEnvelope {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* =============================================
+   KERTAS SURAT VINTAGE GOLD MEWAH (POP-UP)
+============================================= */
+
+.letter-card {
+    display: none;
+    width: 90%;
+    max-width: 480px;
+    background: linear-gradient(135deg, #fffcf5 0%, #f7f0e1 100%);
+    color: #2b2318;
+    padding: 40px 32px;
+    border-radius: 18px;
+    border: 2px solid #d4af37;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.7), 
+        0 0 35px rgba(212, 175, 55, 0.3),
+        inset 0 0 0 6px #fffcf5,
+        inset 0 0 0 8px #e6ca65;
+    position: relative;
+    text-align: center;
+    transform: scale(0.5);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+}
+
+.letter-card.open {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.close-btn {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #7a6334;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #e74c3c;
+    color: #ffffff;
+    border-color: #e74c3c;
+    transform: scale(1.1);
+}
+
+.letter-decor {
+    position: absolute;
+    font-size: 18px;
+    opacity: 0.7;
+}
+.top-left { top: 16px; left: 18px; }
+.top-right { top: 16px; right: 54px; }
+.bottom-left { bottom: 16px; left: 18px; }
+.bottom-right { bottom: 16px; right: 18px; }
+
+.letter-title {
+    font-family: 'Poppins', sans-serif;
+    color: #1a2a4a;
+    font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.letter-divider {
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 0 auto 22px;
+    border-radius: 10px;
+}
+
+.letter-body {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: #4a3e2e;
+    margin-bottom: 25px;
+}
+
+.letter-body p {
+    margin-bottom: 12px;
+}
+
+.letter-footer {
+    font-weight: 600;
+    color: #8c6d1f;
+    font-style: italic;
+    font-size: 15px;
+}
+
+
+/* BACKGROUND AWAL (Biru Elegan Polos Tanpa Bintang) */
+body {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #1a2a4a;
+    background-image: radial-gradient(circle at 50% 50%, #253d6b 0%, #101c33 70%, #0a1122 100%);
+    transition: background-image 1s ease-in-out;
+}
+
+/* BACKGROUND BINTANG (Aktif Hanya Saat Surat Dibuka) */
+body.stars-active {
+    background-image: 
+        radial-gradient(circle at 50% 50%, #253d6b 0%, #101c33 70%, #0a1122 100%),
+        radial-gradient(2px 2px at 30px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 70px 110px, #ffeaa7, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 120px 50px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2.5px 2.5px at 180px 160px, #ffd700, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 260px 80px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 340px 140px, #ffeaa7, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 410px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2.5px 2.5px at 470px 100px, #ffffff, rgba(0,0,0,0));
+    background-repeat: no-repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat;
+    background-size: 100% 100%, 450px 450px, 450px 450px, 450px 450px, 450px 450px, 450px 450px, 450px 450px, 450px 450px, 450px 450px;
+    animation: starsFloat 22s linear infinite, starsTwinkle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes starsFloat {
+    from {
+        background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+    to {
+        background-position: 0 0, 0 -450px, 0 -450px, 0 -450px, 0 -450px, 0 -450px, 0 -450px, 0 -450px, 0 -450px;
+    }
+}
+
+@keyframes starsTwinkle {
+    0% { opacity: 0.85; }
+    100% { opacity: 1; }
+}
+
+
+/* CONTAINER BINTANG BACKGROUND */
+#starContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1; /* Di belakang kartu surat & amplop */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* AKTIF SAAT SURAT DIBUKA */
+#starContainer.active {
+    opacity: 1;
+}
+
+/* BENTUK BINTANG BERSINAR */
+.star {
+    position: absolute;
+    background-color: #ffeaa7;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px rgba(255, 234, 167, 0.8);
+    animation: floatUp linear infinite, twinkle ease-in-out infinite alternate;
+}
+
+/* ANIMASI MELAYANG KE ATAS */
+@keyframes floatUp {
+    from {
+        transform: translateY(105vh);
+    }
+    to {
+        transform: translateY(-10vh);
+    }
+}
+
+/* ANIMASI KEDAP-KEDIP BERSINAR */
+@keyframes twinkle {
+    0% { opacity: 0.3; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.3); }
+}
+
+
+/* TOMBOL NEXT DI SURAT */
+.next-btn {
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #274690, #122B58);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(39, 70, 144, 0.4);
+    transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #385cb0, #1a3973);
+}
+
+/* ARENA GAME KUCING */
+.game-scene {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, #1a2a4a 0%, #0a1122 100%);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    color: white;
+    text-align: center;
+}
+
+.game-header h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.game-header p {
+    font-size: 18px;
+    color: #e2ebff;
+    margin-bottom: 40px;
+}
+
+/* CONTAINER GAME */
+.boxes-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 650px;
+    height: 220px;
+    margin: 20px auto 40px;
+}
+
+/* CONTAINER KARDUS */
+.box-wrapper {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* GAMBAR KARDUS */
+.box-img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 3;
+    pointer-events: none;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+    transition: transform 0.3s ease;
+}
+
+/* KARDUS TERANGKAT/DIBUKA (SITUASI KOSONG) */
+.box-wrapper.open .box-img {
+    transform: translateY(-50px);
+}
+
+/* GAMBAR KUCING TUNGGAL */
+.cat-img {
+    width: 85px;
+    height: auto;
+    position: absolute;
+    bottom: 10px;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    pointer-events: none;
+}
+
+/* ANIMASI KUCING MUNCUL/MENGINTIP */
+.cat-img.show {
+    opacity: 1;
+    transform: translateY(-80px);
+}
+
+/* POSISI AWAL 3 KARDUS */
+.box-wrapper[data-index="0"] { transform: translateX(-180px); }
+.box-wrapper[data-index="1"] { transform: translateX(0px); }
+.box-wrapper[data-index="2"] { transform: translateX(180px); }
+
+.box {
+    font-size: 90px;
+    position: relative;
+    z-index: 2;
+    user-select: none;
+    transition: transform 0.3s ease;
+}
+
+.cat-inside {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 65px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease, top 0.3s ease;
+    user-select: none;
+}
+
+/* KUCING MUNCUL/INTIP */
+.box-wrapper.peek .cat-inside {
+    opacity: 1;
+    top: -35px;
+}
+
+.start-game-btn {
+    padding: 14px 36px;
+    font-size: 18px;
+    background: #ff4f7a;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255, 79, 122, 0.4);
+    transition: 0.3s;
+}
+
+.start-game-btn:hover {
+    transform: scale(1.08);
+    background: #ff3366;
+}

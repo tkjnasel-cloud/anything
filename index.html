@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anything</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="background"></div>
+    <div class="background"></div>
+
+    <!-- Container untuk Efek Bunga Full Screen -->
+    <div id="flowerContainer"></div>
+
+    <!-- Opening Section -->
+    <section id="opening">
+        <h1>i have a surprise for you </h1>
+        <p id="message">will you open it ?</p>
+        <div class="buttons">
+            <button id="yes">YAASSSSS </button>
+            <button id="no">NO. </button>
+        </div>
+    </section>
+
+    <!-- Loading Section -->
+    <section id="loading">
+        <h2>preparing your surprise...</h2>
+        <div class="loading-box">
+            <img src="../assets/cat.gif" id="cat" alt="Cat loading animation">
+            <div class="progress">
+                <div id="bar"></div>
+            </div>
+        </div>
+        <p id="percent">0%</p>
+    </section>
+
+    <!-- Birthday Message -->
+    <section id="birthday">
+        <h1 id="typing"></h1>
+    </section>
+
+    <!-- 3D Canvas Cake Scene -->
+    <section id="cakeScene">
+        <div id="cakeContainer">
+            <canvas id="cakeCanvas" width="400" height="420"></canvas>
+        </div>
+        <p id="cakeText">click the cake </p>
+    </section>
+
+    <!-- OVERLAY SURAT & AMPLOP ANIMASI -->
+    <div id="letterOverlay" class="letter-overlay">
+        <!-- AMPLOP -->
+        <div id="envelope" class="envelope-container" onclick="openLetter()">
+            <div class="envelope-flap"></div>
+            <div class="envelope-paper"></div>
+            <div class="envelope-pocket"></div>
+            <div class="envelope-seal"></div>
+            <p class="envelope-text">click to open the letter</p>
+        </div>
+
+ <!-- SURAT POP-UP -->
+        <div id="letterCard" class="letter-card">
+            <button class="close-btn" onclick="closeLetter()">✕</button>
+            <div class="letter-decor top-left"></div>
+            <div class="letter-decor top-right"></div>
+            <div class="letter-decor bottom-left"></div>
+            <div class="letter-decor bottom-right"></div>
+            
+            <h2 class="letter-title">theree.. a letter for u </h2>
+            <div class="letter-divider"></div>
+            <div class="letter-body">
+                <p>Selamat ulang tahun ya! 🎉</p>
+                <p>Semoga di usiamu yang baru ini, kamu selalu diberikan kebahagiaan, kesehatan, dan semua impianmu bisa tercapai satu per satu.</p>
+                <p>Terima kasih sudah menjadi sosok yang selalu membawa keceriaan. Tetap jadi dirimu yang luar biasa ya! ✨</p>
+            </div>
+            <div class="letter-footer">
+                <p>have a nice day kak !!!</p>
+            </div>
+
+            <!-- TOMBOL NEXT UNTUK MASUK KE GAME -->
+            <button id="nextBtn" class="next-btn" onclick="goToGame()">click here to find something</button>
+        </div>
+    </div>
+
+<!-- SECTION GAME TEBAK KARDUS KUCING -->
+<section id="gameScene" class="game-scene">
+    <div class="game-header">
+        <h2 id="gameTitle">ohhhh noooooo blek was hiding, u should find him !!!</h2>
+        <p id="gameStatus">perhatiin baik baik.... blek sembunyi di kardus mana yaaa ? </p>
+    </div>
+
+    <div class="boxes-container">
+        <!-- GAMBAR KUCING CUMA ADA 1 -->
+        <img src="../assets/cat.png" id="singleCat" class="cat-img" alt="Cat">
+
+        <!-- 3 KARDUS KOSONG -->
+        <div class="box-wrapper" id="box0" onclick="chooseBox(0)">
+            <img src="../assets/box.png" class="box-img" alt="Box">
+        </div>
+        <div class="box-wrapper" id="box1" onclick="chooseBox(1)">
+            <img src="../assets/box.png" class="box-img" alt="Box">
+        </div>
+        <div class="box-wrapper" id="box2" onclick="chooseBox(2)">
+            <img src="../assets/box.png" class="box-img" alt="Box">
+        </div>
+    </div>
+
+    <button id="startShuffleBtn" class="start-game-btn" onclick="startGame()">mulai acak ! </button>
+</section>
+
+    <script src="script.js"></script>
+    <div id="starContainer"></div>
+</body>
+</html>
+
+    <script src="script.js"></script>
+
+    <div id="starContainer"></div>
+    <!-- ELEMEN MUSIK -->
+    <audio id="bgMusic" loop src="../assets/birthday.mp3"></audio>
+</body>
+</html>
