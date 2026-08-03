@@ -31,7 +31,7 @@
     <section id="loading">
         <h2>preparing your surprise...</h2>
         <div class="loading-box">
-            <img src="cat.gif" id="cat" alt="Cat loading animation">
+            <img src="../assets/cat.gif" id="cat" alt="Cat loading animation">
             <div class="progress">
                 <div id="bar"></div>
             </div>
@@ -63,7 +63,7 @@
             <p class="envelope-text">click to open the letter</p>
         </div>
 
-        <!-- SURAT POP-UP -->
+ <!-- SURAT POP-UP -->
         <div id="letterCard" class="letter-card">
             <button class="close-btn" onclick="closeLetter()">✕</button>
             <div class="letter-decor top-left"></div>
@@ -74,12 +74,13 @@
             <h2 class="letter-title">theree.. a letter for u </h2>
             <div class="letter-divider"></div>
             <div class="letter-body">
-                <p>Selamat ulang tahun ya! 🎉</p>
-                <p>Semoga di usiamu yang baru ini, kamu selalu diberikan kebahagiaan, kesehatan, dan semua impianmu bisa tercapai satu per satu.</p>
-                <p>Terima kasih sudah menjadi sosok yang selalu membawa keceriaan. Tetap jadi dirimu yang luar biasa ya! ✨</p>
+                <p>selamat ulang tahun yaa kaa</p>
+                <p>semoga di usia kakak yang baru ini, kakak selalu diberikan kemudahan dan kelancaran dalam menjalankan suatu hal, jangan lupa untuk jaga kesehatan yaa kaa, and nikmatin hidup yang pasti ini karena mati kan cuma sekali hehehe</p>              
+                <p>nasel do'ain juga semoga apa yang kakak impikan bakal tercapai dengan perlahan, makasii yaa kak udah mau temenan sama nasel walaupun menurut nasel berakhir agak canggung gituu, nasel sebenarnya tetep agak ga enak aja sama kakak so.. nasel bener bener minta maaf kalo jadi canggung gitu or intinya gitu lah</p>
+                <p>kakak semangat juga yaa kuliahnya, bentar lagi juga nyusun skripsi kan? jangan terlalu di paksakan juga kak nanti bisa sakit, intinya nasel do'ain yang baik baik buat kakak</p>
             </div>
             <div class="letter-footer">
-                <p>have a nice day kak !!!</p>
+                <p>have a nice day kaa !!!</p>
             </div>
 
             <!-- TOMBOL NEXT UNTUK MASUK KE GAME -->
@@ -87,37 +88,41 @@
         </div>
     </div>
 
-    <!-- SECTION GAME TEBAK KARDUS KUCING -->
-    <section id="gameScene" class="game-scene">
-        <div class="game-header">
-            <h2 id="gameTitle">ohhhh noooooo blek was hiding, u should find him !!!</h2>
-            <p id="gameStatus">perhatiin baik baik.... blek sembunyi di kardus mana yaaa ? </p>
+<!-- SECTION GAME TEBAK KARDUS KUCING -->
+<section id="gameScene" class="game-scene">
+    <div class="game-header">
+        <h2 id="gameTitle">ohhhh noooooo blek was hiding, u should find him !!!</h2>
+        <p id="gameStatus">perhatiin baik baik.... blek sembunyi di kardus mana yaaa ? </p>
+    </div>
+
+    <div class="boxes-container">
+        <!-- GAMBAR KUCING CUMA ADA 1 -->
+        <img src="../assets/cat.png" id="singleCat" class="cat-img" alt="Cat">
+
+        <!-- 3 KARDUS KOSONG -->
+        <div class="box-wrapper" id="box0" onclick="chooseBox(0)">
+            <img src="../assets/box.png" class="box-img" alt="Box">
         </div>
-
-        <div class="boxes-container">
-            <!-- GAMBAR KUCING CUMA ADA 1 -->
-            <img src="cat.png" id="singleCat" class="cat-img" alt="Cat">
-
-            <!-- 3 KARDUS KOSONG -->
-            <div class="box-wrapper" id="box0" onclick="chooseBox(0)">
-                <img src="box.png" class="box-img" alt="Box">
-            </div>
-            <div class="box-wrapper" id="box1" onclick="chooseBox(1)">
-                <img src="box.png" class="box-img" alt="Box">
-            </div>
-            <div class="box-wrapper" id="box2" onclick="chooseBox(2)">
-                <img src="box.png" class="box-img" alt="Box">
-            </div>
+        <div class="box-wrapper" id="box1" onclick="chooseBox(1)">
+            <img src="../assets/box.png" class="box-img" alt="Box">
         </div>
+        <div class="box-wrapper" id="box2" onclick="chooseBox(2)">
+            <img src="../assets/box.png" class="box-img" alt="Box">
+        </div>
+    </div>
 
-        <button id="startShuffleBtn" class="start-game-btn" onclick="startGame()">mulai acak ! </button>
-    </section>
-
-    <div id="starContainer"></div>
-    
-    <!-- ELEMEN MUSIK -->
-    <audio id="bgMusic" loop src="birthday.mp3"></audio>
+    <button id="startShuffleBtn" class="start-game-btn" onclick="startGame()">mulai acak ! </button>
+</section>
 
     <script src="script.js"></script>
+    <div id="starContainer"></div>
+</body>
+</html>
+
+    <script src="script.js"></script>
+
+    <div id="starContainer"></div>
+    <!-- ELEMEN MUSIK -->
+    <audio id="bgMusic" loop src="../assets/birthday.mp3"></audio>
 </body>
 </html>
