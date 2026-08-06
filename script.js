@@ -569,7 +569,7 @@ if (canvas) {
                 setTimeout(() => {
                     cakeStep = 4; 
                     const cakeText = document.getElementById("cakeText");
-                    if (cakeText) cakeText.innerHTML = " nah there are many flowers here ";
+                    if (cakeText) cakeText.innerHTML = " nah.... there are many flowers here ";
 
                     explodeFlowers();
 
@@ -962,7 +962,7 @@ function chooseBox(clickedBoxIndex) {
 
             setTimeout(() => {
                 if (startBtn) {
-                    startBtn.innerHTML = "coba Lagi ";
+                    startBtn.innerHTML = "coba lagi ";
                     startBtn.style.display = "inline-block";
                 }
             }, 1200);
